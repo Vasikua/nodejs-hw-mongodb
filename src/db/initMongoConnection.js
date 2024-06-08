@@ -1,0 +1,1 @@
+console.log("Mongo connection successfully established!");
