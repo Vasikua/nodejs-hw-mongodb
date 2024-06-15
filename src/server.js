@@ -22,13 +22,13 @@ export const setupServer = () => {
     }),
   );
 
-  app.get('/contacts/contacts', async (req, res) => {
+  app.get('/contacts', async (req, res) => {
         const contacts = await getAllContacts();
         res.status(200).json({
             data: contacts,
         });
     });
-    app.get('/contacts/contacts/:contactId', async (req, res, next) => {
+    app.get('/contacts/:contactId', async (req, res, next) => {
         const { contactId } = req.params;
         const contact = await getContactById(contactId);
         if (!contact) {
