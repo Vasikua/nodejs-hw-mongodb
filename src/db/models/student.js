@@ -26,12 +26,6 @@ const studentShema = new Schema(
             enum: ['work','home','personal'],
             
         },
-        createAt: {
-        timestamps: true,    
-        },
-        updatedAt: {
-            timestamps: true,
-        }
     },
     {
         timestamps: true,
