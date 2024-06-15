@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-const studentShema = new Schema(
+const contactShema = new Schema(
 
     {
         name: {
@@ -32,4 +32,4 @@ const studentShema = new Schema(
         versionKey: false,
     },
 );
-export const studentsCollection = model('students', studentShema);
+export const contactsCollection = model('contacts', contactShema);
