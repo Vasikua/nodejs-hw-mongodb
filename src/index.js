@@ -1,7 +1,12 @@
-import { initMongoDB } from './db/initMongoDB.js';
-import { startServer } from './server.js';
+import { initMongoconnection} from './db/initMongoConnection.js';
+import { setupServer } from './server.js';
+
 const bootStrap = async () => {
-  await initMongoDB();
-  startServer();
+  await initMongoconnection();
+  setupServer();
 };
+
 bootStrap();
+
+
+

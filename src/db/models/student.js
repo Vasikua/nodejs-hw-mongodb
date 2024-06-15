@@ -1,33 +1,41 @@
 import { model, Schema } from "mongoose";
-export const studentsCollection = model('students', studentShema);
 const studentShema = new Schema(
 
     {
-    name: {
-      type: String,
-      required: true,
+        name: {
+            type: String,
+            required: true,
+        },
+        phoneNumber: {
+            type: String,
+            required: true,
+        },
+        email: {
+            type: String,
+            required: false,
+        },
+        isFavourite: {
+            type: Boolean,
+            default: false,
+            required: false,
+        },
+        contactType: {
+            type: String,
+            required: true,
+            default:'personal',
+            enum: ['work','home','personal'],
+            
+        },
+        createAt: {
+        timestamps: true,    
+        },
+        updatedAt: {
+            timestamps: true,
+        }
     },
-    age: {
-      type: Number,
-      required: true,
+    {
+        timestamps: true,
+        versionKey: false,
     },
-    gender: {
-      type: String,
-      required: true,
-      enum: ['male', 'female', 'other'],
-    },
-    avgMark: {
-      type: Number,
-      required: true,
-    },
-    onDuty: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-  },
-  {
-    timestamps: true,
-    versionKey: false,
-  },
-)
+);
+export const studentsCollection = model('students', studentShema);
