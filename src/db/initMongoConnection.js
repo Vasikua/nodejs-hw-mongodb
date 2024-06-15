@@ -1,7 +1,7 @@
 console.log("Mongo connection successfully established!");import mongoose from "mongoose";
 import { env } from "../utils/env.js";
 
-export const initMongoDB = async () => {
+export const initMongoconnection = async () => {
     try {
         const user = env('MONGODB_USER');
         const pwd = env('MONGODB_PASSWORD');
