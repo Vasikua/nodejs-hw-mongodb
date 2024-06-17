@@ -36,9 +36,11 @@ export const setupServer = () => {
                 message: 'Contact not found',
             });
             return;
-        }
-        res.status(200).json({
-            data: contact,
+      }
+      console.log("Successfully found contact with id {contactId}!");
+      res.status(200).json({
+        data: contact,
+         
         });
     });
 

@@ -2,8 +2,8 @@
 import { setupServer } from './server.js';
 
 const bootStrap = async () => {
-  await initMongoConnection();
-  setupServer();
+   await initMongoConnection();
+   setupServer();
 };
 
  bootStrap();
