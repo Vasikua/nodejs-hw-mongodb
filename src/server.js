@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import  contactRouter  from './routers/contacts.js';
 import { env } from './utils/env.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
-import { eerrorHandler } from './middlewares/errorHandler.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 
 dotenv.config();
@@ -32,7 +32,7 @@ export const setupServer = () => {
   
   app.use(notFoundHandler);
   
-  app.use(eerrorHandler);
+  app.use(errorHandler);
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
