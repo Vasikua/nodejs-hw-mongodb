@@ -5,7 +5,7 @@ export const getAllContactsController = async (req, res, next) => {
     try {
         const contacts = await getAllContacts();
         res.status(200).json({
-          status: 'sucses',
+          status: 200,
             data: contacts,
             });
     } catch (error) {
