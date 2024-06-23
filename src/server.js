@@ -29,9 +29,7 @@ export const setupServer = () => {
   );
 
   app.use(contactRouter);
-  
   app.use(notFoundHandler);
-  
   app.use(errorHandler);
 
   app.listen(PORT, () => {
