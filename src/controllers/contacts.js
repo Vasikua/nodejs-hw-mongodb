@@ -1,6 +1,7 @@
 import { deleteContact, getAllContacts, getContactById, updateContact } from "../services/contacts.js";
 import createHttpError from "http-errors";
 import { createContact } from "../services/contacts.js";
+// import { createContactSchema } from "../validation/contacts.js";
 
 
 export const getAllContactsController = async (req, res, next) => {
@@ -32,6 +33,7 @@ export const getAllContactsController = async (req, res, next) => {
 };
     
 export const createNewContactController = async (req, res) => {
+ 
   const contact = await createContact(req.body);
   console.log(req.body);
 
