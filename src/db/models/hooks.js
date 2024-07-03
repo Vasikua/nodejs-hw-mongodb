@@ -1,11 +1,11 @@
-export const moongoseSaveError = (error, data, next) => {
+export const mongooseSaveError = (error, data, next)=> {
     error.status = 400;
     next();
 };
 
 
-export const setUpadateSettings = function (next) {
-    this.option.new = true;
-    this.option.runValidators = true;
+export const setUpdateSettings = function (next) {
+    this.options.new = true;
+    this.options.runValidators = true;
     next();
 };

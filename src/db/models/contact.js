@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { moongoseSaveError, setUpadateSettings } from "./hooks.js";
+import {setUpdateSettings, mongooseSaveError} from "./hooks.js";
 
 const contactShema = new Schema(
 
@@ -35,10 +35,10 @@ const contactShema = new Schema(
     },
 );
 
-contactShema.post("save", moongoseSaveError);
+contactShema.post("save", mongooseSaveError);
 
-contactShema.pre("findOneAndUpdate", setUpadateSettings );
+contactShema.pre("findOneAndUpdate", setUpdateSettings );
 
-contactShema.post("findOneAndUpdate", moongoseSaveError);
+contactShema.post("findOneAndUpdate", mongooseSaveError);
 
 export const contactsCollection = model('contacts', contactShema);

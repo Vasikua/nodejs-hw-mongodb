@@ -1,8 +1,8 @@
 import { contactsCollection } from "../db/models/contact.js";
 import { calcPaginationData } from "../utils/calcPaginationData.js";
+import { fieldList, sortOrderList } from "../constants/index.js";
 
-
-export const getAllContacts = async ({filter, page, perPage, sortBy = "_id", sortOrder = "asc" }) => {
+export const getAllContacts = async ({filter, page, perPage, sortBy = fieldList[0], sortOrder = sortOrderList[0]}) => {
     const skip = (page - 1) * perPage;
     const dataBaseQuery = contactsCollection.find();
     if (filter.contactType) {
