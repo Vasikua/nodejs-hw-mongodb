@@ -12,17 +12,17 @@ export const getAllContacts = async ({filter, page, perPage, sortBy = fieldList[
         dataBaseQuery.where("isFavourite").equals(filter.isFavourite);
      };
        
-    const data = await dataBaseQuery.skip(skip).limit(perPage).sort({[sortBy]: sortOrder});
                  
-    const totalItems = await contactsCollection.find().merge(dataBaseQuery).countDocuments();
-                                               
-    const {totalPages, hasNextPage, hasPreviousPage} = calcPaginationData({total: totalItems, page, perPage});
+    const totalContacts = await contactsCollection.find().merge(dataBaseQuery).countDocuments();
+    const data = await dataBaseQuery.skip(skip).limit(perPage).sort({[sortBy]: sortOrder}).exec();
+                
+    const {totalPages, hasNextPage, hasPreviousPage} = calcPaginationData({total: totalContacts, page, perPage});
     
     return {
         data,
         page,
         perPage,
-        totalItems,
+        totalContacts,
         totalPages,
         hasNextPage,
         hasPreviousPage,
