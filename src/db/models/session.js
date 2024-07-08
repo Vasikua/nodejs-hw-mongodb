@@ -1,9 +1,9 @@
 import { model, Schema } from "mongoose";
-
+import {setUpdateSettings, mongooseSaveError} from "./hooks.js";
 
 const sessionSchema = new Schema({
     userId: {
-        type: String,
+        type: Schema.Types.ObjectId ,
         required: true,
 
     },
@@ -16,13 +16,23 @@ const sessionSchema = new Schema({
         required: true,
     },
     accessTokenValidUntil: {
-        Date: true,
+        type: Date,
         required: true,
     },
     refreshTokenValidUntil: {
-        Date: true,
+        type: Date,
         required: true,
     },
-});
+},
+ {
+        timestamps: true,
+        versionKey: false,
+    },
+);
+sessionSchema.post("save", mongooseSaveError);
+
+sessionSchema.pre("findOneAndUpdate", setUpdateSettings );
+
+sessionSchema.post("findOneAndUpdate", mongooseSaveError);
 
 export const sessioCollection = model('session', sessionSchema);
