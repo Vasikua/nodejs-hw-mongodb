@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
 import {setUpdateSettings, mongooseSaveError} from "./hooks.js";
 
+
 const contactSchema = new Schema(
 
     {
@@ -21,6 +22,12 @@ const contactSchema = new Schema(
             default: false,
             required: false,
         },
+        userId: {
+            type: Schema.Types.ObjectId,
+            required: true,
+            ref: "User",
+        }
+        ,
         contactType: {
             type: String,
             required: false,

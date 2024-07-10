@@ -11,5 +11,5 @@ export const fieldList = [
     "updatedAt",
 ];
 
-export const ACCESS_TOKEN_LIFETIME = 900000;
-export const REFRESH_TOKEN_LIFETIME = 259200000; 
+export const ACCESS_TOKEN_LIFETIME =  9000000;
+export const REFRESH_TOKEN_LIFETIME = 25920000; 
