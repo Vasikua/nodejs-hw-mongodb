@@ -5,14 +5,17 @@ import { findUser } from "../services/auth.js";
 
 export const authenticate = async (req, res, next) => {
     const authHeader = req.get("Authorization");
+    
     if (!authHeader) {
         return next(createHttpError(401, "Authorization header missing"));
+    }
 
-    };
     const [bearer, accessToken] = authHeader.split(" ");
+    
     if (bearer !== "Bearer") {
         return next(createHttpError(401, "Bearer missing"));
     }
+
     if (!accessToken) {
         return next(createHttpError(401, "token missing"));
     }
@@ -25,7 +28,7 @@ export const authenticate = async (req, res, next) => {
 
     const accessTokenExpired = new Date() > new Date(session.accessTokenValidUntil);
     
-    if (!accessTokenExpired) {
+    if (accessTokenExpired) {
                 return next(createHttpError(401, "Access token expired"));
     }
 
