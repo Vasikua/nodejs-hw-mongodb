@@ -75,7 +75,7 @@ export const refreshUserController = async (req, res) => {
 
     const refreshTokenExpired = new Date() > new Date(currenSession.refreshTokenValidUntil); 
 
-    if (!refreshTokenExpired) {
+    if (refreshTokenExpired) {
     
         throw createHttpError(401, "session expired");
     }
@@ -92,8 +92,8 @@ export const refreshUserController = async (req, res) => {
 };
 
 export const singoutController = async (req, res) => {
-    const { sessionId } = req.cookies;
-    if (!sessionId) {
+    const {sessionId} = req.cookies;
+    if(!sessionId) {
         throw createHttpError(401, "session not found");
     }
 

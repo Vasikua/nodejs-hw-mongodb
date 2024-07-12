@@ -1,4 +1,9 @@
-import { deleteContact, getAllContacts, getContactById, upsertContact } from "../services/contacts.js";
+import {
+  deleteContact,
+  getAllContacts,
+  getContactById,
+  upsertContact
+} from "../services/contacts.js";
 import createHttpError from "http-errors";
 import { createContact } from "../services/contacts.js";
 import { parsePaginationParams } from "../utils/parsePaginationParams.js";
@@ -47,7 +52,9 @@ export const getContactByIdController = async (req, res) => {
     
 export const createNewContactController = async (req, res) => {
   const { _id: userId } = req.user;
+
   const data = await createContact(...req.body, userId);
+ 
  
   res.status(201).json({
     status: 201,
