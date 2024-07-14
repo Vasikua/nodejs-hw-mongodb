@@ -54,7 +54,7 @@ export const createNewContactController = async (req, res) => {
   const { _id: userId } = req.user;
 
   const data = await createContact(...req.body, userId);
- 
+  console.log(data);
  
   res.status(201).json({
     status: 201,
