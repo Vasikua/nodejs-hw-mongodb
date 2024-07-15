@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser';
 import { env } from './utils/env.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
-
+import { UPLOAD_DIR } from './constants/index.js';
 
 dotenv.config();
 const PORT = Number(env('PORT', '3000'));
@@ -29,6 +29,7 @@ export const setupServer = () => {
       },}),);
   app.use(authRouter);   
   app.use(contactRouter);
+  app.use('/uploads', express.static(UPLOAD_DIR));
   app.use('*', notFoundHandler);
   app.use(errorHandler);
 

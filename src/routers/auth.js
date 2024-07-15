@@ -10,10 +10,11 @@ import { validateBody } from "../middlewares/validateBody.js";
 import {
     userSingupSchema,
     userSinginSchema,
+   } from "../validation/user.js";
+import {
     requestResetEmailSchema,
     resetPasswordSchema
-} from "../validation/user.js";
-
+} from "../validation/auth.js"; 
 import {
     requestResetEmailController,
     resetPasswordController
