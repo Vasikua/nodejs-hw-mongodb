@@ -53,8 +53,13 @@ export const getContactByIdController = async (req, res) => {
     
 export const createNewContactController = async (req, res) => {
   const { _id: userId } = req.user;
-
-  const data = await createContact(...req.body, userId);
+  const photo = req.file;
+  let photoUrl;
+  if (photo) {
+    photoUrl = await saveFileToUploadDir(photo);
+  }  
+  
+  const data = await createContact(userId,{...req.body,  photo: photoUrl});
   console.log(data);
  
   res.status(201).json({
