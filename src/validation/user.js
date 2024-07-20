@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi  from "joi";
 
 
 export const userSingupSchema = Joi.object({
@@ -12,3 +12,6 @@ export const userSinginSchema = Joi.object({
     password: Joi.string().min(6).required(),
 });
 
+export const loginWithGoogleOAuthSchema = Joi.object({
+code: Joi.string().required(),
+});
