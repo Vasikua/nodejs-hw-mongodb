@@ -11,8 +11,8 @@ import { validateBody } from "../middlewares/validateBody.js";
 import {
     userSingupSchema,
     userSinginSchema,
-    loginWithGoogleOAuthSchema,
-   } from "../validation/user.js";
+} from "../validation/user.js";
+import { loginWithGoogleOAuthSchema } from "../validation/auth.js";
 import {
     requestResetEmailSchema,
     resetPasswordSchema
