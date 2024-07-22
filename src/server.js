@@ -21,7 +21,7 @@ export const setupServer = () => {
   app.use(cors());
   app.use(cookieParser());
   app.use(express.json());
-   app.use('/uploads', express.static(UPLOAD_DIR));
+  app.use('/uploads', express.static(UPLOAD_DIR));
   app.use(
     pino({
       transport: {
