@@ -10,7 +10,10 @@ import { SMTP } from "../constants/index.js";
 import { env } from "../utils/env.js";
 import { sendEmail } from "../utils/sendMail.js";
 import { TEMPLATES_DIR } from "../constants/index.js";
-import { getFullNameFromGoogleTokenPayload,validateCode } from "../utils/googleOAuth2.js";
+import {
+    getFullNameFromGoogleTokenPayload,
+    validateCode
+} from "../utils/googleOAuth2.js";
 import { randomBytes } from "node:crypto";
 import { createSession } from "./session.js";
 import { sessioCollection } from "../db/models/session.js";
@@ -93,7 +96,6 @@ export const loginOrSignupWithGoogle = async (code) => {
     const payload = loginTicket.getPayload();
     if (!payload) throw createHttpError(401);
     
-
     let user = await userCollection.findOne({email: payload.email});
 
     if (!user) {
