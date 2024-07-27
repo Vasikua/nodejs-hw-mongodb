@@ -1,5 +1,5 @@
 tags:
-  - Contacts
+  - name: Contacts
 summary: Get contacts
 operationId: getAllContacts
 description: 'Get all contacts'
@@ -10,8 +10,8 @@ parameters:
     name: page
     schema:
       type: integer
-      example: 1
- - in: query
+      # example: 1
+  - in: query
     name: perPage
     schema:
       type: integer
@@ -29,7 +29,7 @@ parameters:
       enum: ['asc', 'desc']
       example: 'asc'
   - in: query
-    name: 
+    name: minAvgMark
     schema:
       type: number
       example: 4
@@ -86,7 +86,7 @@ responses:
                 data:
                   type: array
                   items:
-                    $ref: '../../components/schemas/student.yaml'
+                    $ref: '..\..\components\schemas\contact.yaml'
                 page:
                   type: number
                   example: 2

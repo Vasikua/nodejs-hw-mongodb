@@ -19,8 +19,6 @@ responses:
       application/json:
         schema:
           type: ''
-          required:
-
           properties:
             status:
               type: integer

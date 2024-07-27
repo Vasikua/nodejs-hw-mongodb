@@ -146,7 +146,7 @@ export const getGoogleOAuthUrlController = async (req, res) => {
 
 export const loginWithGoogleController = async (req, res) => {
     const session = await loginOrSignupWithGoogle(req.body.code);
-    setupSession(res, session);
+   setupSession(res, session);
     res.json({
         status: 200,
         message: 'Successfully logged in via Google OAuth!',
@@ -155,9 +155,3 @@ export const loginWithGoogleController = async (req, res) => {
         },
     });
 };
-
-
-
-// export const loginWithGoogleController = async (req, res) => {
-//   const session = await loginOrSignupWithGoogle(req.body.code);
-//   setupSession(res, session);

@@ -1,6 +1,6 @@
-import { OAuth2Client } from 'google-auth-library';
+import { OAuth2Client} from 'google-auth-library';
 import {readFile} from "fs/promises";
-import { env } from "./env.js";
+import { ENV_VARS, env } from "./env.js";
 import  path  from "node:path";
 import createHttpError from 'http-errors';
 
@@ -9,9 +9,9 @@ const PATH_JSON = path.join(process.cwd(), 'google-oauth.json');
 const oauthConfig = JSON.parse(await readFile(PATH_JSON));
 
 const googleOAuthClient = new OAuth2Client({
-    clientId: env('GOOGLE_AUTH_CLIENT_ID'),
-    clientSecret: env('GOOGLE_AUTH_CLIENT_SECRET'),
-    redirectUri: oauthConfig.web.redirect_uris[0],
+    clientId: env(ENV_VARS.GOOGLE_AUTH_CLIENT_ID), 
+  clientSecret: env(ENV_VARS.GOOGLE_AUTH_CLIENT_SECRET), 
+  redirectUri: oauthConfig.web.redirect_uris[0],
 });
 
 

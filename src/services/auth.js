@@ -6,17 +6,16 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 
 import { userCollection } from "../db/models/user.js";
-import { SMTP } from "../constants/index.js";
+import { SMTP, TEMPLATES_DIR } from "../constants/index.js";
 import { env } from "../utils/env.js";
 import { sendEmail } from "../utils/sendMail.js";
-import { TEMPLATES_DIR } from "../constants/index.js";
 import {
     getFullNameFromGoogleTokenPayload,
     validateCode
 } from "../utils/googleOAuth2.js";
 import { randomBytes } from "node:crypto";
 import { createSession } from "./session.js";
-import { sessioCollection } from "../db/models/session.js";
+
 
 export const findUser = filter => userCollection.findOne(filter); 
 
@@ -90,7 +89,6 @@ export const resetPassword = async (payload) => {
 };
 
 
-
 export const loginOrSignupWithGoogle = async (code) => {
     const loginTicket = await validateCode(code);
     const payload = loginTicket.getPayload();
@@ -109,8 +107,8 @@ export const loginOrSignupWithGoogle = async (code) => {
     };
 
     const newSession = createSession();
-    return await sessioCollection.create({
-        userId: user._id,
-        ...newSession,
-    });
+    
+    return newSession;
+  
 };
+     
